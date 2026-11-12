@@ -7,7 +7,8 @@ const loadCommands = require('./utils/loadcom')
 
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessageReactions, 
         GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages,
     ],
     partials: [

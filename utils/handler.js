@@ -3,6 +3,8 @@ const { handleTicketButton } = require('../handlers/ticket-handler')
 const { handleTriviaButton, handleTriviaModal } = require('../handlers/trivia/trivia-handler')
 const { handleTriviaListButton } = require('../handlers/trivia/trivia-list')
 const { handleTriviaDeleteButton } = require('../handlers/trivia/trivia-delete')
+const { handleRoleButton } = require('../handlers/react-role')
+const { registerWelcome } = require('../handlers/welcome/welcome')
 const eventReminders = require('./event-reminders')
 
 async function replyError(interaction, error) {
@@ -19,6 +21,7 @@ function handler(client) {
     client.once(Events.ClientReady, () => {
         console.log(`login as ${client.user.tag}`);
         eventReminders.start(client)
+        registerWelcome(client)
 
         client.user.setPresence({
             activities: [{
@@ -39,6 +42,7 @@ function handler(client) {
                 if (id.startsWith('trivia_')) return await handleTriviaButton(interaction)
                 if (id.startsWith('trivlist:')) return await handleTriviaListButton(interaction)
                 if (id.startsWith('trivdel:')) return await handleTriviaDeleteButton(interaction)
+                if (id.startsWith('rr:')) return await handleRoleButton(interaction)
             } catch (error) {
                 await replyError(interaction, error)
             }
