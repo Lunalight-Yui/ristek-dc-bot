@@ -3,11 +3,11 @@
 ## 1. Onboarding & Roles
 - [x] Buat menu *Dropdown* interaktif di kanal `#rules`. (dibikin sama mas zelig)
 - [ ] Atur logika pemberian *role* `Member` saat opsi *dropdown* "I Agree" dipilih.
-- [ ] Buat desain *Welcome Embed* untuk kanal `#landing-page`.
-- [ ] Atur agar *embed* terkirim otomatis ke `#landing-page` saat ada member baru masuk.
+- [x] Buat desain *Welcome Embed* untuk kanal `#landing-page`. -> setting up global so can set by yourself
+- [x] Atur agar *embed* terkirim otomatis ke `#landing-page` saat ada member baru masuk. -> setting up global
 - [ ] Buat tombol interaktif (*Buttons*) di kanal `#role-assignment`.
 - [ ] Atur logika *toggle* tombol untuk menambah atau mencabut *role* `Cybersecurity` & `Artificial Intelligence`.
-- [ ] Pastikan balasan dari interaksi tombol *role* bersifat *ephemeral* (hanya terlihat oleh user tersebut).
+- [x] Pastikan balasan dari interaksi tombol *role* bersifat *ephemeral* (hanya terlihat oleh user tersebut).
 
 ## 2. Levelling & XP System
 - [ ] Siapkan *database* atau sistem penyimpanan untuk melacak XP tiap member.
@@ -45,4 +45,3 @@
 
 - [x] Ticket bot -> Ku jadiin 1
 - [ ] Blood announcing ctf -> nunggu infra
-- [ ] Import correct section submit flag -> nunggu infra

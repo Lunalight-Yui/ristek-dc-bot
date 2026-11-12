@@ -1,1 +1,17 @@
-# Belum jadi
+services:
+  bot:
+    build: .
+    container_name: ristek-dc-bot
+    restart: unless-stopped
+    init: true               
+    env_file: .env           
+    volumes:
+      - bot-data:/app/data  
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot-data:

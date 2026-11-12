@@ -15,17 +15,24 @@ db.exec(`
   )
 `)
 
+const columns = db.prepare('PRAGMA table_info(welcome)').all().map(c => c.name)
+if (!columns.includes('footer')) {
+  db.exec("ALTER TABLE welcome ADD COLUMN footer TEXT NOT NULL DEFAULT 'Member #{count}'")
+}
+ 
 module.exports = {
-  set: (guildId, channelId, title, message) =>
+  set: (guildId, channelId, title, message, footer) =>
     db.prepare(`
-      INSERT INTO welcome (guild_id, channel_id, title, message) VALUES (?, ?, ?, ?)
+      INSERT INTO welcome (guild_id, channel_id, title, message, footer) VALUES (?, ?, ?, ?, ?)
       ON CONFLICT(guild_id) DO UPDATE SET
         channel_id = excluded.channel_id,
         title = excluded.title,
-        message = excluded.message
-    `).run(guildId, channelId, title, message),
-
+        message = excluded.message,
+        footer = excluded.footer
+    `).run(guildId, channelId, title, message, footer),
+ 
   get: guildId => db.prepare('SELECT * FROM welcome WHERE guild_id = ?').get(guildId),
-
+ 
   remove: guildId => db.prepare('DELETE FROM welcome WHERE guild_id = ?').run(guildId).changes > 0,
 }
+ 
